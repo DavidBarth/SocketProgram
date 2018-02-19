@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
 
 namespace SocketServer
 {
@@ -27,6 +28,10 @@ namespace SocketServer
             Console.WriteLine("Number of received bytes: " + numberOfReceivedBytes);
 
             Console.WriteLine("Data sent by client is: " + buffer);
+
+            string receivedText = Encoding.ASCII.GetString(buffer, 0, buffer.Length);
+
+            Console.WriteLine("Data send by client is: " + receivedText);
 
 
         }
