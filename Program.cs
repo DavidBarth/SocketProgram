@@ -23,17 +23,29 @@ namespace SocketServer
 
             byte[] buffer = new byte[128];
             int numberOfReceivedBytes = 0;
-            numberOfReceivedBytes = client.Receive(buffer);
 
-            Console.WriteLine("Number of received bytes: " + numberOfReceivedBytes);
+            while (true)
+            {
+                numberOfReceivedBytes = client.Receive(buffer);
 
-            Console.WriteLine("Data sent by client is: " + buffer);
+                Console.WriteLine("Number of received bytes: " + numberOfReceivedBytes);
 
-            string receivedText = Encoding.ASCII.GetString(buffer, 0, buffer.Length);
+                string receivedText = Encoding.ASCII.GetString(buffer, 0, buffer.Length);
 
-            Console.WriteLine("Data send by client is: " + receivedText);
+                Console.WriteLine("Data send by client is: " + receivedText);
 
+                client.Send(buffer);
 
+                Console.WriteLine("Data sent by Server is: " + receivedText);
+
+                if (receivedText == "x") //end mean loop
+                {
+                    break;
+                }
+
+                Array.Clear(buffer,0,buffer.Length);
+                numberOfReceivedBytes = 0;
+            }
         }
     }
 }
