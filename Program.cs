@@ -16,6 +16,8 @@ namespace SocketServer
             Console.WriteLine("About to accept incoming connection.");
             
             //BP - using this var to receive data from the client
+            //Accept is a blocking sync method meaning if this code would 
+            //reside in the client after calling it the cleint would be unresponsive till a connectionis established
             Socket client = listenerSocket.Accept();
 
 
