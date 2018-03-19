@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
 
@@ -50,9 +52,42 @@ namespace BelfastAsync
             }
         }
 
-        private void TakeCareOfTcpClient(TcpClient returnedByAccept)
+        //make method async to be able to perfom async read op in the method
+        private async void TakeCareOfTcpClient(TcpClient returnedByAccept)
         {
-            System.Diagnostics.Debug.WriteLine("Client connected successfully - " + " Local Endpoint: " + returnedByAccept.Client.LocalEndPoint.ToString() + ", Remote Endpoint: " + returnedByAccept.Client.RemoteEndPoint.ToString());
+            NetworkStream networkStream;
+            StreamReader networkStreamReader;
+
+            try
+            {
+                networkStream = returnedByAccept.GetStream();
+                networkStreamReader = new StreamReader(networkStream);
+
+                char[] buff = new char[64];
+
+                while (isRunning)
+                {
+                    Debug.WriteLine("-----Ready to Read");
+                    int readReturn = await networkStreamReader.ReadAsync(buff, 0, buff.Length);
+                    Debug.WriteLine("Returned: " + readReturn);
+
+                    if(readReturn== 0)
+                    {
+                        Debug.WriteLine("Socket disconnected");
+                        break;
+                    }
+
+                    string receivedText = new string(buff);
+                    Debug.WriteLine("-----Received text: " + receivedText);
+
+                    Array.Clear(buff, 0, buff.Length);
+
+                }
+            }
+            catch(Exception e)
+            {
+                Debug.WriteLine(e.ToString());
+            }
         }
     }
 }
