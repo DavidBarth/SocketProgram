@@ -1,0 +1,10 @@
+C:\Users\dave\documents\visual studio 2015\Projects\SocketServer\obj\Debug\SynchronousSocketServer.csprojResolveAssemblyReference.cache
+C:\Users\dave\documents\visual studio 2015\Projects\SocketServer\obj\Debug\SocketServer.exe
+C:\Users\dave\documents\visual studio 2015\Projects\SocketServer\obj\Debug\SocketServer.pdb
+C:\Users\dave\documents\visual studio 2015\Projects\SocketServer\bin\Debug\SocketServer.exe.config
+C:\Users\dave\documents\visual studio 2015\Projects\SocketServer\bin\Debug\SocketServer.exe
+C:\Users\dave\documents\visual studio 2015\Projects\SocketServer\bin\Debug\SocketServer.pdb
+C:\Users\dave\documents\visual studio 2015\Projects\SocketServer\bin\Debug\WinFormApp.exe
+C:\Users\dave\documents\visual studio 2015\Projects\SocketServer\bin\Debug\BelfastAsync.dll
+C:\Users\dave\documents\visual studio 2015\Projects\SocketServer\bin\Debug\WinFormApp.pdb
+C:\Users\dave\documents\visual studio 2015\Projects\SocketServer\bin\Debug\BelfastAsync.pdb

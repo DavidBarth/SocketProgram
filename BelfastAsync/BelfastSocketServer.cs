@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
@@ -13,8 +14,14 @@ namespace BelfastAsync
         //helper class
         TcpListener myTCPListener;
 
+        List<TcpClient> myClients;
+
         private bool isRunning;
 
+        public BelfastSocketServer()
+        {
+            myClients = new List<TcpClient>(); //collection of client objects
+        }
         //async will create code behing
         public async void StartListeningFoIncommingConnection(IPAddress ipAddress = null, int port = 23000)
         {
@@ -32,7 +39,7 @@ namespace BelfastAsync
             myIP = ipAddress;
             myPort = port;
 
-            System.Diagnostics.Debug.WriteLine(string.Format("IP Adress: {0} - Port: {1}", myIP.ToString(), myPort.ToString()));
+            Debug.WriteLine(string.Format("IP Adress: {0} - Port: {1}", myIP.ToString(), myPort.ToString()));
 
             myTCPListener = new TcpListener(myIP, myPort);
             try
@@ -43,12 +50,16 @@ namespace BelfastAsync
                 while (isRunning)
                 {
                     var returnedByAccept = await myTCPListener.AcceptTcpClientAsync(); //returns a TCPClient (helper class)
+                    myClients.Add(returnedByAccept);
+                    Debug.WriteLine(string.Format("Client connected successfully, number of clients connected {0} - "
+                        ,myClients.Count, returnedByAccept.Client.RemoteEndPoint));
+
                     TakeCareOfTcpClient(returnedByAccept);
                 }
             }
             catch(Exception e)
             {
-                System.Diagnostics.Debug.WriteLine(e.ToString());
+                Debug.WriteLine(e.ToString());
             }
         }
 
@@ -71,9 +82,10 @@ namespace BelfastAsync
                     int readReturn = await networkStreamReader.ReadAsync(buff, 0, buff.Length);
                     Debug.WriteLine("Returned: " + readReturn);
 
-                    if(readReturn== 0)
+                    if(readReturn == 0)
                     {
                         Debug.WriteLine("Socket disconnected");
+                        RemoveConnectedClient(returnedByAccept);
                         break;
                     }
 
@@ -86,8 +98,14 @@ namespace BelfastAsync
             }
             catch(Exception e)
             {
+                RemoveConnectedClient(returnedByAccept);
                 Debug.WriteLine(e.ToString());
             }
+        }
+
+        private void RemoveConnectedClient(TcpClient returnedByAccept)
+        {
+            myClients.Remove(returnedByAccept);
         }
     }
 }
