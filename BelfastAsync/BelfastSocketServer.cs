@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
 
 namespace BelfastAsync
 {
@@ -106,6 +107,26 @@ namespace BelfastAsync
         private void RemoveConnectedClient(TcpClient returnedByAccept)
         {
             myClients.Remove(returnedByAccept);
+        }
+
+        public async void SendToAllClients(string message)
+        {
+            if (string.IsNullOrEmpty(message))
+            {
+                return;
+            }
+            try
+            {
+                byte[] bufferedMessage = Encoding.ASCII.GetBytes(message);
+                foreach (TcpClient client in myClients)
+                {
+                    client.GetStream().WriteAsync(bufferedMessage,0, bufferedMessage.Length);
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.ToString());
+            }
         }
     }
 }
