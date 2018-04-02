@@ -64,6 +64,27 @@ namespace BelfastAsync
             }
         }
 
+        public void StopServer()
+        {
+            try
+            {
+                if (myTCPListener != null)
+                {
+                    myTCPListener.Stop();
+                }
+                foreach (TcpClient client in myClients)
+                {
+                    client.Close();
+                }
+                myClients.Clear();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.ToString());
+            }
+            
+        }
+
         //make method async to be able to perfom async read op in the method
         private async void TakeCareOfTcpClient(TcpClient returnedByAccept)
         {
@@ -122,6 +143,7 @@ namespace BelfastAsync
                 {
                     client.GetStream().WriteAsync(bufferedMessage,0, bufferedMessage.Length);
                 }
+
             }
             catch (Exception e)
             {
