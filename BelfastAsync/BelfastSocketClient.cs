@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Net.Sockets;
+using System.Threading.Tasks;
 
 namespace BelfastAsync
 {
@@ -67,6 +68,25 @@ namespace BelfastAsync
             myClient = null;
             serverPort = -1;
             myServerIPAddress = null;
+        }
+
+        public async Task ConnectToServer()
+        {
+            if(myClient == null)
+            {
+                myClient = new TcpClient();
+
+                try
+                {
+                    await myClient.ConnectAsync(MyServerIPAddress, serverPort);
+                    Console.WriteLine(string.Format("Connected to server IP/Port: {0} / {1}", 
+                        MyServerIPAddress, ServerPort));
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            }
         }
     }
 }
