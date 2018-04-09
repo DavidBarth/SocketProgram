@@ -3,9 +3,9 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 
-namespace BelfastAsync
+namespace BelfastSocketAsync
 {
-    class BelfastSocketClient
+    public class BelfastSocketClient
     {
         IPAddress myServerIPAddress;
         int serverPort;

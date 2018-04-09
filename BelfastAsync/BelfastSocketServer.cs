@@ -6,7 +6,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
-namespace BelfastAsync
+namespace BelfastSocketAsync
 {
     public class BelfastSocketServer
     {
