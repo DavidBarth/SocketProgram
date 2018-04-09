@@ -1,0 +1,8 @@
+C:\Users\dave\documents\visual studio 2015\Projects\WinFormApp\bin\Debug\WinFormApp.exe.config
+C:\Users\dave\documents\visual studio 2015\Projects\WinFormApp\bin\Debug\WinFormApp.exe
+C:\Users\dave\documents\visual studio 2015\Projects\WinFormApp\bin\Debug\WinFormApp.pdb
+C:\Users\dave\documents\visual studio 2015\Projects\WinFormApp\obj\Debug\WinFormApp.csprojResolveAssemblyReference.cache
+C:\Users\dave\documents\visual studio 2015\Projects\WinFormApp\obj\Debug\WinFormApp.Properties.Resources.resources
+C:\Users\dave\documents\visual studio 2015\Projects\WinFormApp\obj\Debug\WinFormApp.csproj.GenerateResource.Cache
+C:\Users\dave\documents\visual studio 2015\Projects\WinFormApp\obj\Debug\WinFormApp.exe
+C:\Users\dave\documents\visual studio 2015\Projects\WinFormApp\obj\Debug\WinFormApp.pdb
