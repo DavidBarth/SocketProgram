@@ -1,0 +1,8 @@
+C:\Users\dave\Documents\Visual Studio 2015\Projects\AsyncSocketClient\bin\Debug\AsyncSocketClient.exe.config
+C:\Users\dave\Documents\Visual Studio 2015\Projects\AsyncSocketClient\bin\Debug\AsyncSocketClient.exe
+C:\Users\dave\Documents\Visual Studio 2015\Projects\AsyncSocketClient\bin\Debug\AsyncSocketClient.pdb
+C:\Users\dave\Documents\Visual Studio 2015\Projects\AsyncSocketClient\bin\Debug\BelfastAsync.dll
+C:\Users\dave\Documents\Visual Studio 2015\Projects\AsyncSocketClient\bin\Debug\BelfastAsync.pdb
+C:\Users\dave\Documents\Visual Studio 2015\Projects\AsyncSocketClient\obj\Debug\AsyncSocketClient.csprojResolveAssemblyReference.cache
+C:\Users\dave\Documents\Visual Studio 2015\Projects\AsyncSocketClient\obj\Debug\AsyncSocketClient.exe
+C:\Users\dave\Documents\Visual Studio 2015\Projects\AsyncSocketClient\obj\Debug\AsyncSocketClient.pdb
